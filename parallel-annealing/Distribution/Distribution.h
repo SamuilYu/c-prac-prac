@@ -1,7 +1,3 @@
-//
-// Created by samuil on 11/20/20.
-//
-
 #ifndef C_PRAC_PRAC_DISTRIBUTION_H
 #define C_PRAC_PRAC_DISTRIBUTION_H
 
