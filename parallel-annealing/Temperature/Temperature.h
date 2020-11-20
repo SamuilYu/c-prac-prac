@@ -3,12 +3,16 @@
 
 
 class Temperature {
-private:
+protected:
     int counter;
     double baseTemperature;
+    double currentTemperature;
 public:
     Temperature(double baseTemperature);
-    double virtual getNext();
+    double getTemperature() {
+        return currentTemperature;
+    };
+    virtual void coolDown();
 };
 
 class BoltzmannTemperature : public Temperature {};

@@ -5,18 +5,19 @@ Temperature ::Temperature(double baseTemperature) {
     counter = 0;
 }
 
-double LogLinearTemperature ::getNext() {
+double CauchyTemperature::coolDown() {
     counter++;
-    return baseTemperature * log(1 + counter) / (1 + counter);
+    currentTemperature = baseTemperature / (1 + counter);
 }
 
-double CauchyTemperature ::getNext() {
-    counter++
-    return baseTemperature / (1 + counter);
+double BoltzmannTemperature::coolDown() {
+    counter++;
+    currentTemperature = baseTemperature / log(1 + counter);
 }
 
-double BoltzmannTemperature::getNext() {
+double LogLinearTemperature::coolDown() {
     counter++;
-    return baseTemperature / log(1 + counter);
+    currentTemperature = baseTemperature * log(1 + counter) / (1 + counter);
 }
+
 
