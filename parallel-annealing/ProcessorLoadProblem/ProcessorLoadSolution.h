@@ -2,6 +2,7 @@
 #define C_PRAC_PRAC_PROCESSORLOADSOLUTION_H
 
 #include <vector>
+#include <string>
 using namespace std;
 
 #include "../Solution/Solution.h"
@@ -9,6 +10,7 @@ using namespace std;
 
 class Task {
 private:
+    string name;
     int duration;
 public:
     int getDuration() {
@@ -19,6 +21,7 @@ public:
         return this->duration < other.duration;
     }
 };
+
 
 class ProcessorLoadSolution: public Solution {
 private:
@@ -31,6 +34,7 @@ public:
     void insertTaskAtProcessor(Task task, int processorNumber);
     Task getHeaviestTaskAtProcessorAndRemove(int processorNumber);
 };
+
 
 class ProcessorLoadMutation: public Mutation {
 private:
