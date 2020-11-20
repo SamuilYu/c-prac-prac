@@ -5,7 +5,7 @@
 
 class Mutation {
 public:
-    virtual Solution getNeighborSolution (Solution solution);
+    virtual Solution getNeighborSolution (Solution& solution);
 };
 
 
