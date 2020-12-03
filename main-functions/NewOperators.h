@@ -4,25 +4,28 @@
 #include "stdexcept"
 #include "MainFunctions/BaseFunction.h"
 #include "ArithmeticFunctions/Sum.h"
+#include "ArithmeticFunctions/Diff.h"
+#include "ArithmeticFunctions/Prod.h"
+#include "ArithmeticFunctions/Div.h"
 
 template <class A, class B>
-Sum operator+(const A& first, const B& second) {
-    return Sum(first, second);
+shared_ptr<BaseArithmetic> operator+(const A& first, const B& second) {
+    return make_shared<Sum>(Sum(*first, *second));
 }
 
 template <class A, class B>
-BaseFunction& operator*(const A& first, const B& second) {
-    return prod(first, second);
+shared_ptr<BaseArithmetic> operator*(const A& first, const B& second) {
+    return make_shared<Prod>(Prod(*first, *second));
 }
 
 template <class A, class B>
-BaseFunction& operator/(const A& first, const B& second) {
-    return div(first, second);
+shared_ptr<BaseArithmetic> operator/(const A& first, const B& second) {
+    return make_shared<Div>(Div(*first, *second));
 }
 
 template <class A, class B>
-BaseFunction& operator-(const A& first, const B& second) {
-    return diff(first, second);
+shared_ptr<BaseArithmetic> operator-(const A& first, const B& second) {
+    return make_shared<Diff>(Diff(*first, *second));
 }
 
 #endif //MAINFUNCTIONS_NEWOPERATORS_H

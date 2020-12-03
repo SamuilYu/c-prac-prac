@@ -21,5 +21,5 @@ float Sum::operator()(float point) const {
 }
 
 shared_ptr<BaseFunction> Sum::copy() const {
-    return shared_ptr<BaseFunction>();
+    return make_shared<Sum>(*this);
 }
