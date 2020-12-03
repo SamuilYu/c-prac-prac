@@ -3,6 +3,7 @@
 
 #include "BaseFunction.h"
 #include <vector>
+#include <iostream>
 
 class Polynomial: public BaseFunction {
 private:
@@ -19,6 +20,23 @@ public:
     float getDerivativeAtPoint(float d) const override;
 
     shared_ptr<BaseFunction> copy() const override;
+};
+
+class IdentityFunction: public Polynomial {
+public:
+    IdentityFunction() {
+        polynomialVector.clear();
+        polynomialVector.push_back(0);
+        polynomialVector.push_back(1);
+    }
+};
+
+class ConstantFunction: public Polynomial {
+public:
+    ConstantFunction(float c) {
+        polynomialVector.clear();
+        polynomialVector.push_back(c);
+    }
 };
 
 
