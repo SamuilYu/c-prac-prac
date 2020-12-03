@@ -1,6 +1,10 @@
 #include "Polynomial.h"
 #include "sstream"
 
+Polynomial::Polynomial(float f) {
+    polynomialVector.push_back(f);
+}
+
 Polynomial::Polynomial() {
     polynomialVector.push_back(0);
 }

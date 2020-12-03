@@ -1,13 +1,17 @@
 #ifndef MAINFUNCTIONS_POWERFUNCTION_H
 #define MAINFUNCTIONS_POWERFUNCTION_H
 
+#include <vector>
 #include "BaseFunction.h"
 
 class PowerFunction: public BaseFunction {
 private:
     int degree;
 public:
-    PowerFunction(int degree);
+    explicit PowerFunction(int degree);
+    explicit PowerFunction(float degree);
+    PowerFunction();
+    explicit PowerFunction(vector<float> v);
 
     string toString() const override;
 

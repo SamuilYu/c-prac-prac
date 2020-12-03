@@ -1,8 +1,24 @@
 #include <sstream>
 #include "PowerFunction.h"
 
+PowerFunction::PowerFunction() {
+    this->degree = 0;
+}
+
 PowerFunction::PowerFunction(int degree) {
     this->degree = degree;
+}
+
+PowerFunction::PowerFunction(float degree) {
+    this->degree = int(degree);
+}
+
+PowerFunction::PowerFunction(vector<float> v) {
+    if (!v.empty()) {
+        this->degree = int(v[0]);
+    } else {
+        this->degree = 0;
+    }
 }
 
 string PowerFunction::toString() const {

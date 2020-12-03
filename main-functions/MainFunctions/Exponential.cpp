@@ -6,6 +6,18 @@ Exponential::Exponential(float k) {
     coefficient = k;
 }
 
+Exponential::Exponential() {
+    coefficient = 0;
+}
+
+Exponential::Exponential(vector<float> k) {
+    if (!k.empty()) {
+        coefficient = k[0];
+    } else {
+        coefficient = 0;
+    }
+}
+
 string Exponential::toString() const {
     if (coefficient == 0) {
         return "1";
