@@ -19,6 +19,8 @@ endfunction()
 enable_cxx_compiler_flag_if_supported("-Wno-error=deprecated-copy")
 
 
-add_executable(Google_Tests_run ../Tests/PolynomialTests.cpp ../Tests/ExponentialTests.cpp ../MainFunctions/Polynomial.cpp ../MainFunctions/Exponential.cpp
-        ../MainFunctions/PowerFunction.cpp)
+add_executable(Google_Tests_run
+        ../Tests/PolynomialTests.cpp ../Tests/ExponentialTests.cpp ../Tests/ArithmeticTests.cpp
+        ../MainFunctions/Polynomial.cpp ../MainFunctions/Exponential.cpp ../MainFunctions/PowerFunction.cpp
+        ../ArithmeticFunctions/Sum.cpp ../ArithmeticFunctions/Diff.cpp ../ArithmeticFunctions/Div.cpp ../ArithmeticFunctions/Prod.cpp)
 target_link_libraries(Google_Tests_run gtest gtest_main)
