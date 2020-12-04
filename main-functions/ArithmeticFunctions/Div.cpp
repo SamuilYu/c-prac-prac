@@ -21,7 +21,11 @@ float Div::getDerivativeAtPoint(float point) const {
     float v = (*secondTerm)(point);
     float ul = firstTerm->getDerivativeAtPoint(point);
     float vl = secondTerm->getDerivativeAtPoint(point);
-    return (u*vl - v*ul) / (v*v);
+    if (v != 0) {
+        return (-u*vl + v*ul) / (v*v);
+    } else {
+        throw logic_error("Dividing by zero");
+    }
 }
 
 float Div::operator()(float point) const {
