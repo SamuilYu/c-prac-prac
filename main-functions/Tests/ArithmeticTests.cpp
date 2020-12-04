@@ -2,12 +2,13 @@
 #include "../MainFunctions/BaseFunction.h"
 #include "../MainFunctions/FuncFactory.h"
 #include "../NewOperators.h"
+#include "../Root.h"
 
 
 class ArithmeticTests : public ::testing::Test {
 public:
     FuncFactory factory;
-    shared_ptr<BaseFunction> a, b, c, d, e;
+    shared_ptr<BaseFunction> a, b, c, d, e, f;
 
     void SetUp() override {
         a = factory.create("poly", {1, -2, 1});
@@ -15,6 +16,7 @@ public:
         c = factory.create("poly", {0, 1, 0});
         d = factory.create("exp", -2);
         e = factory.create("power", -3);
+        f = factory.create("poly", {-1, 0, 1});
     }
 };
 
@@ -44,4 +46,13 @@ TEST_F(ArithmeticTests, ProdAndDivOnlyDerivatives) {
     EXPECT_FLOAT_EQ((b/c)->getDerivativeAtPoint(1), 4);
     EXPECT_THROW((b/c)->getDerivativeAtPoint(0), logic_error);
     EXPECT_FLOAT_EQ((b/c)->getDerivativeAtPoint(2), 8);
+}
+
+TEST_F(ArithmeticTests, GetRootTests) {
+    EXPECT_NEAR(getRoot(a, 10, 0.1, 220), 1, 0.1);
+    EXPECT_NEAR(getRoot(b, 10, 0.1, 250), 0, 0.1);
+    EXPECT_NEAR(getRoot(c, 10, 0.1, 220), 0, 0.1);
+    EXPECT_NEAR(getRoot(f, 10, 0.1, 100), 1, 0.1);
+    EXPECT_NEAR(getRoot(f, -10, 0.1, 100), -1, 0.1);
+
 }
