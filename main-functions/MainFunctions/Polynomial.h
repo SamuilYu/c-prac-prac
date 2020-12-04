@@ -66,10 +66,6 @@ public:
             polynomialVector.push_back(0);
         }
     }
-
-
-
-
 };
 
 

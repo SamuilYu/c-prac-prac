@@ -23,5 +23,6 @@ enable_cxx_compiler_flag_if_supported("-std=c++17")
 enable_cxx_compiler_flag_if_supported("-pthread")
 enable_cxx_compiler_flag_if_supported("-O3")
 
+add_subdirectory(Google_tests)
 file(GLOB SOURCES MainFunctions/*.cpp ArithmeticFunctions/*.cpp)
 add_executable(${PROJECT_NAME} main.cpp ${SOURCES})

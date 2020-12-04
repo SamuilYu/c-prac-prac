@@ -59,10 +59,10 @@ string Polynomial::toString() const {
 
 float Polynomial::getDerivativeAtPoint(float point) const {
     float result = 0;
-    int degree = 0;
-    float accumulator = 1 / point;
-    for (const auto &coefficient: polynomialVector) {
-        result += coefficient * accumulator * float(degree);
+    int degree = 1;
+    float accumulator = 1;
+    for (int i = 1; i < polynomialVector.size(); ++i) {
+        result += polynomialVector[i] * accumulator * float(degree);
         degree++;
         accumulator *= point;
     }

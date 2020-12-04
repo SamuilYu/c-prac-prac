@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.17)
+
+project(Google_tests)
+
+add_subdirectory(googletest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+function(enable_cxx_compiler_flag_if_supported flag)
+    string(FIND "${CMAKE_CXX_FLAGS}" "${flag}" flag_already_set)
+    if(flag_already_set EQUAL -1)
+        check_cxx_compiler_flag("${flag}" flag_supported)
+        if(flag_supported)
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}" PARENT_SCOPE)
+        endif()
+        unset(flag_supported CACHE)
+    endif()
+endfunction()
+
+enable_cxx_compiler_flag_if_supported("-Wno-error=deprecated-copy")
+
+
+add_executable(Google_Tests_run ../Tests/PolynomialTests.cpp ../Tests/ExponentialTests.cpp ../MainFunctions/Polynomial.cpp ../MainFunctions/Exponential.cpp
+        ../MainFunctions/PowerFunction.cpp)
+target_link_libraries(Google_Tests_run gtest gtest_main)
